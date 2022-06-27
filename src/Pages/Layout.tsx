@@ -4,7 +4,7 @@ import { Video } from "../components/Video";
 
 export function Layout() {
   return (
-    <div className="flex flex-col h-full">
+    <div className="h-full flex flex-col">
       <Header />
       <main className="flex flex-1">
         <Video />

@@ -37,11 +37,13 @@ export function Video() {
 
   const { lessonSlug } = useParams<{ lessonSlug: string }>()
 
-  const { data } = useQuery<GetLessonBySlugResponse>(GET_LESSON_BY_SLUG, {
-    variables: {
-      slug: lessonSlug,
-    }
-  })
+  const { data } = lessonSlug
+    ? useQuery<GetLessonBySlugResponse>(GET_LESSON_BY_SLUG, {
+      variables: {
+        slug: lessonSlug,
+      }
+    })
+    : { data: null }
 
   if (lessonSlug == null || data == null) return <div className="flex-1" />
 

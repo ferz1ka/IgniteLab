@@ -19,12 +19,12 @@ export function Lesson(props: LessonProps) {
   const availableAtFormatted = format(props.availableAt, "EEEE' • 'd' de 'MMMM' • 'k'h'mm", { locale: ptBR }).replace(/^\w/, c => c.toUpperCase())
 
   return (
-    <Link to={`/event/lesson/${props.slug}`} className="group">
+    <Link to={isLessonAvailable ? `/event/lesson/${props.slug}` : ''} className="group">
       <span className="text-gray-300">
         {availableAtFormatted}
       </span>
       <div
-        className={`relative z-20 rounded border border-gray-500 p-4 mt-2 group-hover:border-green-500 ${isLessonSelected && 'bg-green-500'}`}
+        className={`relative z-20 rounded border border-gray-500 p-4 mt-2 ${isLessonSelected && 'bg-green-500'} ${isLessonAvailable ? 'group-hover:border-green-500' : 'opacity-50'}`}
       >
         {isLessonSelected && <div className={`absolute -left-[6.875px] top-1/2 -translate-y-1/2 rotate-45 w-[13.75px] h-[13.75px] bg-green-500 z-10 ${isLessonSelected ? "opacity-100" : "opacity-0"}`} />}
         <header className="flex items-center justify-between">
